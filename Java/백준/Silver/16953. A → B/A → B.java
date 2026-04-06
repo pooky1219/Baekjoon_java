@@ -40,9 +40,9 @@ public class Main {
 
             // 아니라면 뒤에 1붙이거나 *2 체크
             // 1을 붙인게 B보다 길이가 길어지면 B가 될 수 없으므로 continue
-            String temp = num + "1";
-            if( temp.length() <= (B + "").length() )
-                q.offer(new long[] {Long.parseLong(temp), cnt + 1 });
+            long next = num * 10 + 1;
+            if( next <= B )
+                q.offer(new long[] {next, cnt + 1 });
 
             // 2를 곱한게 B보다 커지면 B가 될 수 없으므로 continue
             if(num * 2 <= B)

@@ -23,21 +23,22 @@ class Solution {
         dist = new int[n + 1]; // 거리배열
         bfs();
         
-        // 가장 멀리 떨어진 거리 찾기
-        int max = 0;
-        for(int i = 1; i <= n; i++) {
-            max = Math.max(max, dist[i]);
-        }
-        
         // 가장 멀리 떨어진 노드의 개수
+        int max = 0;
         int answer = 0;
-        for(int i = 1; i <= n; i++) {
-            if(dist[i] == max) answer++;
+        
+        for (int i = 1; i <= n; i++) {
+            if (dist[i] > max) {
+                max = dist[i];
+                answer = 1;
+            } else if (dist[i] == max) {
+                answer++;
+            }
         }
         return answer;
     }
     
-    // 다익스트라
+    // bfs
     static void bfs() {
         Queue<int[]> q = new ArrayDeque<>();
         q.offer(new int[] {1, 0});
